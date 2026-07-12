@@ -35,6 +35,10 @@ jobs:
         run: npm ci
 
       - name: Build
+        env:
+          # Site is served from the domain root via the custom domain
+          # (szymon-wereszczynski.com), so don't use the /portfolio/ base.
+          VITE_BASE_PATH: /
         run: npm run build
 
       - uses: actions/upload-pages-artifact@v3
